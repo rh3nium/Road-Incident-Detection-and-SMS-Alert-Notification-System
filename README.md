@@ -17,8 +17,8 @@ This system integrates **computer vision**, **AI report generation**, **Flask ba
     * [🎨 UI Layer](#ui-layer)
     * [🧪 Dependencies](#dependencies)
 * [🔧 Configuration Guide](#configuration-guide)
-    * [💬 Step 1 — Create a Free Twilio Account](#step-1--create-a-free-twilio-account)
-    * [🛢️ Step 2 — Create a Free MongoDB Atlas Account](#step-2--create-a-free-mongodb-atlas-account)
+    * [💬 Step 1 — Create a Free Twilio Account](#step-1---create-a-free-twilio-account)
+    * [🛢️ Step 2 — Create a Free MongoDB Atlas Account](#step-2---create-a-free-mongodb-atlas-account)
 * [🚀 Steps to Run The Application](#steps-to-run-the-application)
 * [✔ Final Notes](#final-notes)
 
