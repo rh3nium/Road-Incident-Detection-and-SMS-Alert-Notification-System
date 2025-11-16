@@ -32,6 +32,8 @@ This system integrates **computer vision**, **AI report generation**, **Flask ba
 
 * <b>[✅ Final Notes](#final-notes)</b>
 
+* <b>[License (MIT)](#license)</b>
+
 ---
 
 ## Overview
@@ -413,3 +415,9 @@ http://127.0.0.1:5000
 * Never commit secrets like your MongoDB or Twilio account passwords or phone numbers.
 * Use environment variables in production.
 * Ensure webcam or RTSP feed is configured on your PC.
+
+---
+
+## License
+
+This project is under the MIT license and is free to copy, modify, and distribute with appropriate attribution. Read the license at [LICENSE.md](LICENSE.md)
