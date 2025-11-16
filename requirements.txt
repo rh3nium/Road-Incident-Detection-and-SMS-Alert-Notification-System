@@ -1,0 +1,21 @@
+# Core Runtime
+flask
+numpy
+opencv-python
+opencv-python-headless
+pymongo[srv]
+twilio
+gunicorn
+
+# Deep Learning Components
+torch
+transformers
+sentencepiece
+tokenizers
+pandas
+scikit-learn
+datasets
+ultralytics
+
+# Optional / Utilities
+matplotlib  # for any visualization (heatmaps, debugging)

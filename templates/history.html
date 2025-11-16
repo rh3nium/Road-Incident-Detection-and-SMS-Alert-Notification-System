@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incident History - ResQ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            background-color: #111;
+            color: white;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* --- Menubar --- */
+        .menubar {
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            border-bottom: 2px solid #ff6600;
+        }
+
+        .menubar img.logo {
+            height: 50px;
+            cursor: pointer;
+        }
+
+        .menubar nav {
+            margin-left: auto;
+        }
+
+        .menubar nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: bold;
+        }
+
+        .menubar nav a:hover {
+            color: #ff6600;
+        }
+
+        .content {
+            margin: 30px auto;
+            width: 85%;
+        }
+
+        .incident-box {
+            background-color: rgba(0, 0, 0, 0.35);
+            border: 2px solid white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(4px);
+        }
+
+        .incident-box h2 {
+            color: #ff6600;
+            margin-bottom: 10px;
+        }
+
+        .incident-box p {
+            margin: 5px 0;
+        }
+
+        details {
+            margin-top: 10px;
+        }
+
+        summary {
+            color: #00aced;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        summary:hover {
+            text-decoration: underline;
+        }
+
+        .details-content {
+            margin-top: 8px;
+            background-color: rgba(255, 255, 255, 0.08);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .details-content p {
+            color: #eee;
+            margin: 4px 0;
+        }
+
+        .graph-section {
+            text-align: center;
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .graph-section h2 {
+            text-decoration: underline;
+            color: #ff6600;
+            margin-bottom: 15px;
+        }
+
+        .graph-placeholder {
+            background-color: rgba(255, 255, 255, 0.15);
+            border: 2px solid white;
+            border-radius: 8px;
+            width: 80%;
+            height: 500px;
+            max-width: 1000px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+            background: #F1F5F4;
+        }
+    </style>
+</head>
+<body>
+
+<header style="background-color: black; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem;">
+    <img src="{{ url_for('static', filename='logo.jpeg') }}" alt="RESQ Logo" style="height: 50px;">
+    <div style="display: flex; align-items: center; gap: 1rem;">
+        <a href="{{ url_for('history') }}" style="text-decoration: none; color: inherit;">
+            <h3 style="margin: 0;">History</h3>
+        </a>
+        <span class="separator">|</span>
+        <h3 style="margin: 0;">Settings</h3>
+    </div>
+</header>
+
+    <div class="content">
+
+        {% for incident in incidents | sort(attribute='timestamp', reverse=True) %}
+        <div class="incident-box">
+            <h2>
+                {% if 'fire' in incident.incident_type|lower %}🔥
+                {% elif 'electrical' in incident.incident_type|lower %}⚡
+                {% elif 'collision' in incident.incident_type|lower or 'crash' in incident.incident_type|lower %}🚗
+                {% elif 'person' in incident.incident_type|lower or 'injury' in incident.incident_type|lower %}🩹
+                {% else %}❗{% endif %}
+                {{ incident.incident_type }}
+            </h2>
+
+            <p><strong>Location:</strong>
+                PES University RR Campus, Banashankari, Bengaluru 560085
+            </p>
+
+            <p><strong>Timestamp:</strong> 
+                {% if incident.timestamp %}
+                    {{ incident.timestamp.strftime("%d %b %Y, %I:%M %p") }}
+                {% else %}
+                    N/A
+                {% endif %}
+            </p>
+
+            <details>
+                <summary>View Details</summary>
+                <div class="details-content">
+                    <p><strong>Severity Level:</strong> {{ incident.severity_level or "N/A" }}</p>
+                    <p><strong>Resources Needed:</strong> 
+                        {{ incident.resources_needed | join(', ') if incident.resources_needed else "N/A" }}
+                    </p>
+                    <p><strong>Dispatch Status:</strong> {{ incident.dispatch_status or "N/A" }}</p>
+                </div>
+            </details>
+        </div>
+        {% endfor %}
+
+        <!-- Embedded MongoDB Chart -->
+        <div class="graph-section">
+            <h2>📊 Incident Visualization</h2>
+            <div class="graph-placeholder">
+                <iframe 
+                    src="https://charts.mongodb.com/charts-resq-btkexzx/embed/dashboards?id=e4391844-aeab-40ea-a77e-0f86e887c503&theme=light&autoRefresh=true&maxDataAge=14400&showTitleAndDesc=false&scalingWidth=fixed&scalingHeight=fixed">
+                </iframe>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
