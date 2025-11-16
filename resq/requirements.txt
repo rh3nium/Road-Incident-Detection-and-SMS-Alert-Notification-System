@@ -1,0 +1,33 @@
+## --- Web & Backend Frameworks --- ##
+flask                 # Web server, routes, dashboard, controller UI
+gunicorn              # Production WSGI server (deployment)
+
+
+## --- Computer Vision (CV) Stack --- ##
+opencv-python         # OpenCV with GUI support (local testing)
+opencv-python-headless # Headless OpenCV for servers / Docker
+ultralytics           # YOLOv8 (optional real-time object detection)
+
+
+## --- Deep Learning / AI Components --- ##
+torch                 # PyTorch backend for T5 + model inference
+transformers          # HuggingFace Transformers (T5 model)
+sentencepiece         # Tokenizer dependency for T5
+tokenizers            # Fast tokenizer library (HF)
+scikit-learn          # ML utilities (clustering logic for jams, metrics)
+datasets              # HuggingFace dataset loader (optional)
+pandas                # Data handling for logs and tables
+
+
+## --- Database Layer --- ##
+pymongo[srv]          # MongoDB Atlas connector (SRV protocol)
+
+
+## --- Messaging / API Integrations --- ##
+twilio                # SMS / WhatsApp notifications API
+
+
+## --- Utilities (Optional) --- ##
+numpy                 # Numerical operations used across CV + ML
+matplotlib            # Debug visuals, heatmaps, plotting
+
