@@ -6,29 +6,35 @@ This system integrates **computer vision**, **AI report generation**, **Flask ba
 
 # 📖 TABLE OF CONTENTS
 
-* [⚙️ Overview](#%E2%9A%99%EF%B8%8F-overview)
-    * [🧩 Core Features](#%F0%9F%A7%A9-core-features)
-    * [💥 Incidents the CV/YOLO Model Detects](#%F0%9F%92%A5-incidents-the-cvyolo-model-detects)
-* [🔄 Workflow](#%F0%9F%94%81-workflow)
-    * [📝 Steps](#%F0%9F%93%8D-steps)
-* [📁 Project Structure](#%F0%9F%93%81-project-structure)
-    * [🐍 Root Python Modules](#%F0%9F%90%8D-root-python-modules)
-    * [📁 Model Folder](#%F0%9F%93%81-model-folder)
-    * [🎨 UI Layer](#%F0%9F%8E%A8-ui-layer)
-    * [🧪 Dependencies](#%F0%9F%A7%AA-dependencies)
-* [🔧 Configuration Guide](#%F0%9F%94%A7-configuration-guide)
-    * [💬 Step 1 — Create a Free Twilio Account](#%F0%9F%97%83%EF%B8%8F-step-1-%E2%80%94-create-a-free-twilio-account)
-    * [🛢️ Step 2 — Create a Free MongoDB Atlas Account](#%F0%9F%9B%B2%EF%B8%8F-step-2-%E2%80%94-create-a-free-mongodb-atlas-account)
-* [🚀 Steps to Run The Application](#%F0%9F%9A%80-steps-to-run-the-application)
-* [✔ Final Notes](#%E2%9C%94-final-notes)
+* <b>[⚙️ Overview](#overview)</b>
+    * [🧩 Core Features](#core-features)
+    * [💥 Incidents the CV/YOLO Model Detects](#incidents-the-cvyolo-model-detects)
+
+* <b>[🔄 Workflow](#workflow)</b>
+    * [🖧 Diagram](#steps)
+    * [📝 Steps](#steps)
+
+* <b>[📁 Project Structure](#project-structure)</b>
+    * [🐍 Root Python Modules](#root-python-modules)
+    * [📹 Model Folder](#model-folder)
+    * [🎨 UI Layer](#ui-layer)
+    * [🧪 Dependencies](#dependencies)
+
+* <b>[🔧 Configuration Guide](#configuration-guide)</b>
+    * [💬 Create a Free Twilio Account](#step-1---create-a-free-twilio-account)
+    * [⛁ Create a Free MongoDB Atlas Account](#step-2---create-a-free-mongodb-atlas-account)
+
+* <b>[🚀 Steps to Run The Application](#steps-to-run-the-application)</b>
+
+* <b>[✔ Final Notes](#final-notes)</b>
 
 ---
 
-## ⚙️ Overview
+## Overview
 
-This system continuously monitors video feeds, detects hazards, generates natural-language incident reports using T5, and alerts responders through SMS/WhatsApp.
+This system continuously monitors video feeds, detects hazards, generates natural-language incident reports using T5, and alerts responders through SMS.
 
-### 🧩 Core Features
+### Core Features
 
 * 📹 **Real-time video analysis** (OpenCV + MobileNet SSD + optional YOLO)
 * 🧠 **Automatic incident reports** using a T5 model
@@ -37,38 +43,42 @@ This system continuously monitors video feeds, detects hazards, generates natura
 * 📱 **Mobile App Notifications**
 * 🌐 **Flask Dashboard** for real-time monitoring
 
-### 💥 Incidents the CV/YOLO Model Detects
+### Incidents the CV/YOLO Model Detects
 
 The YOLO model is pretrained to detect a variety of objects, such as cars, buses, autorickshaws, buildings, trees, and dogs and cats.
-* Vehicle Crash
-* Traffic Jam
-* Fire
-* Person Hit by Vehicle (approximate proximity logic)
+* Vehicle Crash 💥 (vehicle bounding boxes touching/overlapping logic)
+* Traffic Jam 🚧 (proximity and clustering logic)
+* Fire 🔥 (HSV color detection logic)
+* Person Hit by Vehicle 💥 (approximate proximity logic)
 
-For our hackathon demo, we used toy cars to simulate a real car crash.
+<br>
 
+**For our hackathon demo, we used toy cars to simulate a real car crash.**
 
+<img width="1389" height="617" alt="Screenshot from 2025-11-16 13-43-00" src="https://github.com/user-attachments/assets/79ffb09b-3f4b-4fa7-9426-e50f9181bf51" />
 
 ---
 
-## 🔄 Workflow
+## Workflow
+
+### Diagram
 
 ```
 Camera → OpenCV Detection → Incident? → T5 Report → Twilio SMS Dispatch
 ```
 
-### 📝 Steps
+### Steps
 
 1. 📡 Capture video feed.
 2. 🧠 Run CV incident detection.
 3. 📝 Generate AI narrative.
 4. 🧑‍✈️ Controller verifies.
 5. 📤 SMS/WhatsApp dispatch.
-6. 🚑 Responders notified.
+6. 🚑 Responders notified (Ambulance/Police/Fire Station)
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 resq/
@@ -92,11 +102,11 @@ resq/
 
 ---
 
-## 🐍 Root Python Modules
+## Root Python Modules
 
 ### `app.py` — Flask Backend & Dispatch Engine
 
-Manages routing, video feed, T5 pipeline, Twilio SMS, MongoDB logging, and resource allocation.
+Manages web dashboard, routing, video feed, T5 pipeline, Twilio SMS, MongoDB logging, and resource allocation.
 
 ### `detector.py` — Real-time CV Pipeline
 
@@ -128,20 +138,20 @@ Contains Twilio/MongoDB credentials, model name, server settings.
 
 ---
 
-## 📁 Model Folder
+## Model Folder
 
 MobileNet SSD pretrained model files.
 
 ---
 
-## 🎨 UI Layer
+## UI Layer
 
 `index.html` — dashboard (video feed + logs)
 `history.html` — log history (MongoDB)
 
 ---
 
-## 🧪 Dependencies
+## Dependencies
 
 ### `requirements.txt`
 
@@ -193,15 +203,13 @@ matplotlib            # Debug visuals, heatmaps, plotting
 
 ---
 
-## 🔧 Configuration Guide
+## Configuration Guide
 
 Below are **all setup steps** required before running the application.
 
----
+## Step 1 - Create a Free Twilio Account
 
-## 💬 Step 1 — Create a Free Twilio Account
-
-**URL:** [https://www.twilio.com/try-twilio](https://www.twilio.com/try-twilio)
+**URL:** [SMS Messaging, Built to Scale](https://login.twilio.com/u/signup?state=hKFo2SBPN0VrQ0R3LTBaQTBKRG5MdTZWVjZmdjlQbThwWGxmTKFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIDdQUkRqTjFPVHY5VlRQM09Ncm1naWFaaUFTTXYtU0FCo2NpZNkgTW05M1lTTDVSclpmNzdobUlKZFI3QktZYjZPOXV1cks) 💬
 
 Sign up for a free account → verify phone → get a **Twilio phone number**.
 
@@ -213,9 +221,7 @@ You will need:
 
 You will insert these into `config.py`.
 
----
-
-## 🛢️ Step 2 — Create a Free MongoDB Atlas Account
+## Step 2 - Create a Free MongoDB Atlas Account
 
 **URL:** [https://www.mongodb.com/cloud/atlas/register](https://www.mongodb.com/cloud/atlas/register)
 
@@ -231,7 +237,7 @@ You will insert these into `config.py`.
 
 ---
 
-## Your `config.py` (Insert Your Details)
+### Your `config.py` (Insert Your Details)
 
 ```python
 # Twilio credentials
@@ -255,7 +261,7 @@ FLASK_HOST = "0.0.0.0"
 FLASK_PORT = 5000
 ```
 
-### Replace with:
+#### Replace with:
 
 * `your_account_sid` → From Twilio Dashboard
 * `your_auth_token` → From Twilio Dashboard
@@ -267,7 +273,7 @@ FLASK_PORT = 5000
 
 ---
 
-## Your `resources.py` (Insert Your Details)
+### Your `resources.py` (Insert Your Details)
 
 ```python
 # Mapping of resource type to default receiver phone numbers
@@ -278,7 +284,7 @@ RESOURCE_RECEIVERS = {
 }
 ```
 
-### Replace:
+#### Replace:
 
 * `"no."` → Real phone numbers in **international format**, e.g.:
 
@@ -290,7 +296,7 @@ You can add multiple numbers per emergency unit.
 
 ---
 
-## 🚀 Steps to Run The Application
+## Steps to Run The Application
 
 ### 🔹 1. Navigate to Desired Location
 
@@ -354,7 +360,7 @@ http://127.0.0.1:5000
 
 ---
 
-## ✔ Final Notes
+## Final Notes
 
 * Never commit real passwords.
 * Use environment variables in production.
