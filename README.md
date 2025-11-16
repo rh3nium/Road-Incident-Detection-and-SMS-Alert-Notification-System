@@ -6,9 +6,11 @@ This system integrates **computer vision**, **AI report generation**, **Flask ba
 
 # 📖 TABLE OF CONTENTS
 
-* <b>[⚙️ Overview](#overview)</b>
+* <b>[📝 Overview](#overview)</b>
     * [🧩 Core Features](#core-features)
     * [💥 Incidents the CV/YOLO Model Detects](#incidents-the-cvyolo-model-detects)
+
+* <b>[⚙️ Technology Stack](#technology-stack)</b>
 
 * <b>[🔄 Workflow](#workflow)</b>
     * [🖧 Diagram](#steps)
@@ -26,7 +28,7 @@ This system integrates **computer vision**, **AI report generation**, **Flask ba
 
 * <b>[🚀 Steps to Run The Application](#steps-to-run-the-application)</b>
 
-* <b>[✔ Final Notes](#final-notes)</b>
+* <b>[✅ Final Notes](#final-notes)</b>
 
 ---
 
@@ -59,6 +61,56 @@ The YOLO model is pretrained to detect a variety of objects, such as cars, buses
 
 ---
 
+## Technology Stack
+
+### Web & Backend Frameworks
+![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask)
+![Gunicorn](https://img.shields.io/badge/Gunicorn-499848?style=for-the-badge&logo=gunicorn)
+
+**- flask**: Web server, routes, dashboard, controller UI  
+**- gunicorn**: Production WSGI server (deployment)
+
+### Computer Vision (CV) Stack
+![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv)
+![Ultralytics](https://img.shields.io/badge/Ultralytics-YOLOv8-blue?style=for-the-badge)
+
+**- opencv-python**: OpenCV with GUI support (local testing)  
+**- opencv-python-headless**: Headless OpenCV for servers / Docker  
+**- ultralytics**: YOLOv8 (optional real-time object detection)
+
+### Deep Learning / AI Components
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch)
+![Transformers](https://img.shields.io/badge/HuggingFace-Transformers-yellow?style=for-the-badge&logo=huggingface)
+![scikit-learn](https://img.shields.io/badge/Scikit--Learn-F7931E?style=for-the-badge&logo=scikitlearn)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas)
+
+**- torch**: PyTorch backend for T5 + model inference  
+**- transformers**: HuggingFace Transformers (T5 model)  
+**- sentencepiece**: Tokenizer dependency for T5  
+**- tokenizers**: Fast tokenizer library (HF)  
+**- scikit-learn**: ML utilities (clustering logic, metrics)  
+**- datasets**: HuggingFace dataset loader (optional)  
+**- pandas**: Data handling for logs and tables
+
+### Database Layer
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb)
+
+**- pymongo[srv]**: MongoDB Atlas connector (SRV protocol)
+
+### Messaging / API Integrations
+![Twilio](https://img.shields.io/badge/Twilio-F22F46?style=for-the-badge&logo=twilio)
+
+**- twilio**: SMS notifications API
+
+### Utilities (Optional)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=matplotlib)
+
+**- numpy**: Numerical operations used across CV + ML  
+**- matplotlib**: Debug visuals, heatmaps, plotting
+
+---
+
 ## Workflow
 
 ### Diagram
@@ -72,9 +124,8 @@ Camera → OpenCV Detection → Incident? → T5 Report → Twilio SMS Dispatch
 1. 📡 Capture video feed.
 2. 🧠 Run CV incident detection.
 3. 📝 Generate AI narrative.
-4. 🧑‍✈️ Controller verifies.
-5. 📤 SMS/WhatsApp dispatch.
-6. 🚑 Responders notified (Ambulance/Police/Fire Station)
+4. 📤 SMS/WhatsApp dispatch.
+5. 🚑 Responders notified (Ambulance/Police/Fire Station).
 
 ---
 
@@ -146,8 +197,10 @@ MobileNet SSD pretrained model files.
 
 ## UI Layer
 
-`index.html` — dashboard (video feed + logs)
-`history.html` — log history (MongoDB)
+### `index.html`
+Dashboard (video feed + real-time generated incident data)
+### `history.html`
+Log history (fetched dynamically from MongoDB)
 
 ---
 
@@ -155,51 +208,40 @@ MobileNet SSD pretrained model files.
 
 ### `requirements.txt`
 
-### Web & Backend Frameworks
-![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask)
-![Gunicorn](https://img.shields.io/badge/Gunicorn-499848?style=for-the-badge&logo=gunicorn)
-
-flask                 # Web server, routes, dashboard, controller UI  
+```
+## --- Web & Backend Frameworks --- ##
+flask                 # Web server, routes, dashboard, controller UI
 gunicorn              # Production WSGI server (deployment)
 
-### Computer Vision (CV) Stack
-![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=for-the-badge&logo=opencv)
-![Ultralytics](https://img.shields.io/badge/Ultralytics-YOLOv8-blue?style=for-the-badge)
 
-opencv-python          # OpenCV with GUI support (local testing)  
-opencv-python-headless # Headless OpenCV for servers / Docker  
-ultralytics            # YOLOv8 (optional real-time object detection)
+## --- Computer Vision (CV) Stack --- ##
+opencv-python         # OpenCV with GUI support (local testing)
+opencv-python-headless # Headless OpenCV for servers / Docker
+ultralytics           # YOLOv8 (optional real-time object detection)
 
-### Deep Learning / AI Components
-![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch)
-![Transformers](https://img.shields.io/badge/HuggingFace-Transformers-yellow?style=for-the-badge&logo=huggingface)
-![scikit-learn](https://img.shields.io/badge/Scikit--Learn-F7931E?style=for-the-badge&logo=scikitlearn)
-![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas)
 
-torch                 # PyTorch backend for T5 + model inference  
-transformers          # HuggingFace Transformers (T5 model)  
-sentencepiece         # Tokenizer dependency for T5  
-tokenizers            # Fast tokenizer library (HF)  
-scikit-learn          # ML utilities (clustering logic, metrics)  
-datasets              # HuggingFace dataset loader (optional)  
+## --- Deep Learning / AI Components --- ##
+torch                 # PyTorch backend for T5 + model inference
+transformers          # HuggingFace Transformers (T5 model)
+sentencepiece         # Tokenizer dependency for T5
+tokenizers            # Fast tokenizer library (HF)
+scikit-learn          # ML utilities (clustering logic for jams, metrics)
+datasets              # HuggingFace dataset loader (optional)
 pandas                # Data handling for logs and tables
 
-### Database Layer
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb)
 
+## --- Database Layer --- ##
 pymongo[srv]          # MongoDB Atlas connector (SRV protocol)
 
-### Messaging / API Integrations
-![Twilio](https://img.shields.io/badge/Twilio-F22F46?style=for-the-badge&logo=twilio)
 
+## --- Messaging / API Integrations --- ##
 twilio                # SMS / WhatsApp notifications API
 
-### Utilities (Optional)
-![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy)
-![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=matplotlib)
 
-numpy                 # Numerical operations used across CV + ML  
+## --- Utilities (Optional) --- ##
+numpy                 # Numerical operations used across CV + ML
 matplotlib            # Debug visuals, heatmaps, plotting
+```
 
 ---
 
