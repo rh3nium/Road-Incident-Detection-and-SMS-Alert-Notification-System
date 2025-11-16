@@ -7,7 +7,7 @@ This system integrates **computer vision**, **AI report generation**, **Flask ba
 # 📖 TABLE OF CONTENTS
 
 * [⚙️ Overview](#%EF%B8%8F-overview)
-    * [🧩 Core Features](#%F0%9F%A7%A9-core-features)
+    * [🧩 Core Features](#%F0%9F%A7-core-features)
     * [💥 Incidents the CV/YOLO Model Detects](#%F0%9F%92%A5-incidents-the-cvyolo-model-detects)
 * [🔄 Workflow](#%F0%9F%94%81-workflow)
     * [📝 Steps](#%F0%9F%93%8D-steps)
