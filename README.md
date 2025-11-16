@@ -4,7 +4,7 @@ This system integrates **computer vision**, **AI report generation**, **Flask ba
 
 ---
 
-# 📖 TABLE OF CONTENTS
+# TABLE OF CONTENTS
 
 * <b>[📝 Overview](#overview)</b>
     * [🧩 Core Features](#core-features)
