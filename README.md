@@ -15,7 +15,7 @@ This system integrates **computer vision**, **AI report generation**, **Flask ba
 * <b>[⚙️ Technology Stack](#technology-stack)</b>
 
 * <b>[🔄 Workflow](#workflow)</b>
-    * [🖧 Diagram](#steps)
+    * [🖧 Diagram](#diagram)
     * [📝 Steps](#steps)
 
 * <b>[📁 Project Structure](#project-structure)</b>
