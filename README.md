@@ -400,7 +400,7 @@ pip install -r requirements.txt
 python3 app.py
 ```
 
-Then open:
+Then open the url:
 
 ```
 http://127.0.0.1:5000
@@ -410,6 +410,6 @@ http://127.0.0.1:5000
 
 ## Final Notes
 
-* Never commit real passwords.
+* Never commit secrets like your MongoDB or Twilio account passwords or phone numbers.
 * Use environment variables in production.
-* Ensure webcam or RTSP feed is configured.
+* Ensure webcam or RTSP feed is configured on your PC.
