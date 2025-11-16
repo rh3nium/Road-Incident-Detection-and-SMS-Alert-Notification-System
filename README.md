@@ -32,7 +32,7 @@ This system integrates **computer vision**, **AI report generation**, **Flask ba
 
 * <b>[✅ Final Notes](#final-notes)</b>
 
-* <b>[License (MIT)](#license)</b>
+* <b>[License](#license)</b>
 
 ---
 
