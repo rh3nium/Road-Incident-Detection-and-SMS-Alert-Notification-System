@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RESQ Incident Detection Dashboard</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<style>
+.separator { color: white; font-size: 16px; }
+.output-box { margin-bottom: 4px; padding: 0.4rem; background-color: #1e1e1e; color: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.3); }
+.container { display: flex; gap: 2rem; flex-wrap: wrap; }
+.video-map-column { flex: 1; min-width: 550px; }
+.output-column { flex: 1; min-width: 700px; }
+#map { height: 400px; width: 100%; margin-top: 1rem; border-radius: 8px; }
+</style>
+</head>
+<body>
+<header style="background-color: black; display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem;">
+<img src="{{ url_for('static', filename='logo.jpeg') }}" alt="RESQ Logo" style="height: 50px;">
+<div style="display: flex; align-items: center; gap: 1rem;">
+<a href="{{ url_for('history') }}" style="text-decoration: none; color: inherit;">
+<h3 style="margin: 0;">History</h3>
+</a>
+<span class="separator">|</span>
+<h3 style="margin: 0;">Settings</h3>
+</div>
+</header>
+
+<div class="container">
+<!-- Video Feed + Map Column -->
+<div class="video-map-column">
+<h2>Live Camera Feed</h2>
+<img src="{{ url_for('video_feed') }}" alt="Live Video Feed" style="width:100%; border-radius: 8px;">
+<h2>Service Vehicle Location</h2>
+<div id="map"></div>
+</div>
+
+<!-- Output Data Column -->
+<div class="output-column">
+<h2>Output Data</h2>
+<div class="output-box"><p><strong>Type:</strong> <span id="incident_type">Initializing...</span></p></div>
+<div class="output-box"><p><strong>Location:</strong> <span id="location_gps">Initializing...</span></p></div>
+<div class="output-box"><p><strong>Timestamp:</strong> <span id="timestamp">Initializing...</span></p></div>
+<div class="output-box"><p><strong>Objects Detected:</strong> <span id="objects_detected">Initializing...</span></p></div>
+<div class="output-box"><p><strong>Resources Required:</strong> <span id="resources_needed">Initializing...</span></p></div>
+<div class="output-box"><p><strong>Sequential Events:</strong> <span id="events">Initializing...</span></p></div>
+<div class="output-box"><p><strong>DISPATCH STATUS:</strong> <span id="dispatch_status">Not Sent</span></p></div>
+
+<form method="POST" action="{{ url_for('cancel_dispatch') }}">
+<button type="submit" class="btn btn-decline" id="cancelBtn" disabled><b>CANCEL DISPATCH</b></button>
+</form>
+</div>
+</div>
+
+<footer>
+&copy; 2025 RESQ Incident Detection | Powered by Flask & OpenCV
+</footer>
+
+<script>
+
+// --- AJAX Polling for Incident Data ---
+async function updateDashboard() {
+    const res = await fetch('/current_data');
+    const data = await res.json();
+    document.getElementById('incident_type').innerText = data.incident_type || 'Normal Flow';
+    document.getElementById('location_gps').innerText = data.location_gps || 'N/A';
+    document.getElementById('timestamp').innerText = data.timestamp || 'N/A';
+    document.getElementById('objects_detected').innerText = data.objects_detected?.join(', ') || 'N/A';
+    document.getElementById('resources_needed').innerText = data.resources_needed?.join(', ') || 'N/A';
+    document.getElementById('events').innerText = data.events || 'N/A';
+
+    // Dispatch status logic
+    let dispatchStatus = "Not Sent";
+    if (data.dispatch_status && typeof data.dispatch_status === "object") {
+        const statuses = Object.values(data.dispatch_status).map(v => v.status);
+        if (statuses.includes("Sent")) dispatchStatus = "Sent";
+        else if (statuses.includes("Confirmed")) dispatchStatus = "Confirmed";
+        else if (statuses.includes("Declined")) dispatchStatus = "Declined";
+        else if (statuses.includes("Cancelled")) dispatchStatus = "Cancelled";
+    }
+    document.getElementById('dispatch_status').innerText = dispatchStatus;
+
+    // Auto dispatch
+    if (data.incident_type && data.incident_type !== "Normal Flow" && dispatchStatus === "Not Sent") {
+        console.log("Auto dispatch triggered for:", data.incident_type);
+        await fetch('/auto_dispatch', { method: 'POST' });
+        document.getElementById('cancelBtn').disabled = false;
+    }
+
+    if (["Cancelled", "Not Sent"].includes(dispatchStatus)) {
+        document.getElementById('cancelBtn').disabled = true;
+    }
+}
+
+setInterval(updateDashboard, 1000);
+</script>
+</body>
+</html>
