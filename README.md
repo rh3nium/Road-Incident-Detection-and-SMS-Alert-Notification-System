@@ -13,12 +13,12 @@ This system integrates **computer vision**, **AI report generation**, **Flask ba
     * [📝 Steps](#%F0%9F%93%8D-steps)
 * [📁 Project Structure](#%F0%9F%93%81-project-structure)
     * [🐍 Root Python Modules](#%F0%9F%90%8D-root-python-modules)
-    * [📹 Model Folder](#%F0%9F%93%81-model-folder)
+    * [📁 Model Folder](#%F0%9F%93%81-model-folder)
     * [🎨 UI Layer](#%F0%9F%8E%A8-ui-layer)
     * [🧪 Dependencies](#%F0%9F%A7%AA-dependencies)
 * [🔧 Configuration Guide](#%F0%9F%94%A7-configuration-guide)
-    * [💬 Create a Free Twilio Account](#%F0%9F%9F%A6-step-1--create-a-free-twilio-account)
-    * [🛢️ Create a Free MongoDB Atlas Account](#%F0%9F%9F%A9-step-2--create-a-free-mongodb-atlas-account)
+    * [💬 Step 1 — Create a Free Twilio Account](#%F0%9F%97%83%EF%B8%8F-step-1--create-a-free-twilio-account)
+    * [🛢️ Step 2 — Create a Free MongoDB Atlas Account](#%F0%9F%9B%B2%EF%B8%8F-step-2--create-a-free-mongodb-atlas-account)
 * [🚀 Steps to Run The Application](#%F0%9F%9A%80-steps-to-run-the-application)
 * [✔ Final Notes](#%E2%9C%94-final-notes)
 
@@ -43,6 +43,10 @@ This system continuously monitors video feeds, detects hazards, generates natura
 * Traffic Jam
 * Fire
 * Person Hit by Vehicle (approximate proximity logic)
+
+For our hackathon demo, we used toy cars to simulate a real car crash.
+
+
 
 ---
 
@@ -194,7 +198,7 @@ Below are **all setup steps** required before running the application.
 
 ---
 
-## 🟦 Step 1 — Create a Free Twilio Account
+## 💬 Step 1 — Create a Free Twilio Account
 
 **URL:** [https://www.twilio.com/try-twilio](https://www.twilio.com/try-twilio)
 
@@ -210,7 +214,7 @@ You will insert these into `config.py`.
 
 ---
 
-## 🟩 Step 2 — Create a Free MongoDB Atlas Account
+## 🛢️ Step 2 — Create a Free MongoDB Atlas Account
 
 **URL:** [https://www.mongodb.com/cloud/atlas/register](https://www.mongodb.com/cloud/atlas/register)
 
@@ -262,7 +266,7 @@ FLASK_PORT = 5000
 
 ---
 
-## 🟨 Your `resources.py` (Insert Your Details)
+## Your `resources.py` (Insert Your Details)
 
 ```python
 # Mapping of resource type to default receiver phone numbers
