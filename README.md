@@ -6,21 +6,21 @@ This system integrates **computer vision**, **AI report generation**, **Flask ba
 
 # 📖 TABLE OF CONTENTS
 
-* [⚙️ Overview](#overview)
-    * [🧩 Core Features](#core-features)
-    * [💥 Incidents the CV/YOLO Model Detects](#incidents-the-cvyolo-model-detects)
-* [🔄 Workflow](#workflow)
-    * [📝 Steps](#steps)
-* [📁 Project Structure](#project-structure)
-    * [🐍 Root Python Modules](#root-python-modules)
-    * [📁 Model Folder](#model-folder)
-    * [🎨 UI Layer](#ui-layer)
-    * [🧪 Dependencies](#dependencies)
-* [🔧 Configuration Guide](#configuration-guide)
-    * [💬 Step 1 — Create a Free Twilio Account](#step-1---create-a-free-twilio-account)
-    * [🛢️ Step 2 — Create a Free MongoDB Atlas Account](#step-2---create-a-free-mongodb-atlas-account)
-* [🚀 Steps to Run The Application](#steps-to-run-the-application)
-* [✔ Final Notes](#final-notes)
+* [⚙️ Overview](#%E2%9A%99%EF%B8%8F-overview)
+    * [🧩 Core Features](#%F0%9F%A7%A9-core-features)
+    * [💥 Incidents the CV/YOLO Model Detects](#%F0%9F%92%A5-incidents-the-cvyolo-model-detects)
+* [🔄 Workflow](#%F0%9F%94%81-workflow)
+    * [📝 Steps](#%F0%9F%93%8D-steps)
+* [📁 Project Structure](#%F0%9F%93%81-project-structure)
+    * [🐍 Root Python Modules](#%F0%9F%90%8D-root-python-modules)
+    * [📁 Model Folder](#%F0%9F%93%81-model-folder)
+    * [🎨 UI Layer](#%F0%9F%8E%A8-ui-layer)
+    * [🧪 Dependencies](#%F0%9F%A7%AA-dependencies)
+* [🔧 Configuration Guide](#%F0%9F%94%A7-configuration-guide)
+    * [💬 Step 1 — Create a Free Twilio Account](#%F0%9F%97%83%EF%B8%8F-step-1-%E2%80%94-create-a-free-twilio-account)
+    * [🛢️ Step 2 — Create a Free MongoDB Atlas Account](#%F0%9F%9B%B2%EF%B8%8F-step-2-%E2%80%94-create-a-free-mongodb-atlas-account)
+* [🚀 Steps to Run The Application](#%F0%9F%9A%80-steps-to-run-the-application)
+* [✔ Final Notes](#%E2%9C%94-final-notes)
 
 ---
 
@@ -224,8 +224,8 @@ Create a cluster → create a database → create a collection.
 You need:
 
 * **MongoDB URI** (e.g. `mongodb+srv://username:password@cluster.mongodb.net/`)
-* **Database Name** (default: `resq`)
-* **Collection Name** (default: `reports`)
+* **Database Name** ('resq')
+* **Collection Name** ('reports')
 
 You will insert these into `config.py`.
 
