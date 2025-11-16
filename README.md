@@ -10,6 +10,8 @@ This system integrates **computer vision**, **AI report generation**, **Flask ba
     * [🧩 Core Features](#core-features)
     * [💥 Incidents the CV/YOLO Model Detects](#incidents-the-cvyolo-model-detects)
 
+* <b>[📹 Project Demo](#project-demo)</b>
+
 * <b>[⚙️ Technology Stack](#technology-stack)</b>
 
 * <b>[🔄 Workflow](#workflow)</b>
@@ -18,7 +20,7 @@ This system integrates **computer vision**, **AI report generation**, **Flask ba
 
 * <b>[📁 Project Structure](#project-structure)</b>
     * [🐍 Root Python Modules](#root-python-modules)
-    * [📹 Model Folder](#model-folder)
+    * [📹 Mobilenet Model Folder](#model-folder)
     * [🎨 UI Layer](#ui-layer)
     * [🧪 Dependencies](#dependencies)
 
@@ -53,11 +55,15 @@ The YOLO model is pretrained to detect a variety of objects, such as cars, buses
 * Fire 🔥 (HSV color detection logic)
 * Person Hit by Vehicle 💥 (approximate proximity logic)
 
-<br>
+## Project Demo
 
-**For our hackathon demo, we used toy cars to simulate a real car crash.**
+For our hackathon demo, we used toy cars to simulate a real car crash.
 
-<img width="1389" height="617" alt="Screenshot from 2025-11-16 13-43-00" src="https://github.com/user-attachments/assets/79ffb09b-3f4b-4fa7-9426-e50f9181bf51" />
+<img width="1389" height="617" alt="Screenshot from 2025-11-16 13-43-00" src="https://github.com/user-attachments/assets/79ffb09b-3f4b-4fa7-9426-e50f9181bf51">
+
+After an incident is detected (in this case, fire), an SMS alert is triggered via Twilio API.
+
+<img width=auto height="500" alt="Screenshot from 2025-10-26 06-03-47" src="https://github.com/user-attachments/assets/10649a17-e1d8-44d5-a2b1-dbffad3adaa0" />
 
 ---
 
