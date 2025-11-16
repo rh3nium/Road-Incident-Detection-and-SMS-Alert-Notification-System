@@ -367,7 +367,7 @@ git clone https://github.com/rh3nium/Road-Incident-Hazard-Detection-and-SMS-Aler
 ### 🔹 3. Navigate to the Repository Folder
 
 ```
-cd resq
+cd Road-Incident-Hazard-Detection-and-SMS-Alert-Notification-System
 ```
 
 ---
