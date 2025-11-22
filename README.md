@@ -59,11 +59,12 @@ The YOLO model is pretrained to detect a variety of objects, such as cars, buses
 
 ## Project Demo
 
-For our hackathon demo, we used toy cars to simulate a real car crash.
+<b>For our hackathon demo, we used toy cars to simulate a real car crash. Bounding boxes can be seen around the cars along with confidence scores.</b>
+- A <b>confidence score</b> in object detection is a numerical value (typically between 0 and 1) that expresses the machine learning model's certainty that a predicted object is present and that its classification is correct
 
 <img width="1389" height="617" alt="Screenshot from 2025-11-16 13-43-00" src="https://github.com/user-attachments/assets/79ffb09b-3f4b-4fa7-9426-e50f9181bf51">
 
-After an incident is detected (in this case, fire), an SMS alert is triggered via Twilio API.
+<b>After an incident is detected (in this case, fire), an SMS alert is triggered via Twilio API.</b>
 
 <img width=auto height="500" alt="Screenshot from 2025-10-26 06-03-47" src="https://github.com/user-attachments/assets/10649a17-e1d8-44d5-a2b1-dbffad3adaa0" />
 
