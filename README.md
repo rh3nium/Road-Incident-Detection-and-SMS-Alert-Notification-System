@@ -1,7 +1,6 @@
 # 🚨 Real-Time Road Incident/Hazard Detection and SMS Alert Notification System
 
-This system integrates **computer vision**, **AI report generation**, **Flask backend**, and **Twilio SMS dispatch** to deliver a complete real-time hazard detection + emergency alerting workflow.
-
+### A real-time road incident detection system using Computer Vision (MobileNet/YOLO), AI-based incident reporting (T5), and instant SMS alerts (Twilio) via a Flask dashboard.
 ---
 
 # TABLE OF CONTENTS
