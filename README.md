@@ -9,7 +9,7 @@
     * [🧩 Core Features](#core-features)
     * [💥 Incidents the CV/YOLO Model Detects](#incidents-the-cvyolo-model-detects)
 
-* <b>[📹 Project Demo](#project-demo)</b>
+* <b>[📹 Project Demo Images](#project-demo-images)</b>
 
 * <b>[⚙️ Technology Stack](#technology-stack)</b>
 
@@ -28,6 +28,8 @@
     * [⛁ Create a Free MongoDB Atlas Account](#step-2---create-a-free-mongodb-atlas-account)
 
 * <b>[🚀 Steps to Run The Application](#steps-to-run-the-application)</b>
+
+* <b>[💪 Development Challenges](#development-challenges)</b>
 
 * <b>[✅ Final Notes](#final-notes)</b>
 
@@ -56,16 +58,28 @@ The YOLO model is pretrained to detect a variety of objects, such as cars, buses
 * Fire 🔥 (HSV color detection logic)
 * Person Hit by Vehicle 💥 (approximate proximity logic)
 
-## Project Demo
+---
+
+## Project Demo Images
 
 <b>For our hackathon demo, we used toy cars to simulate a real car crash. Bounding boxes can be seen around the cars along with confidence scores.</b>
 - A <b>confidence score</b> in object detection is a numerical value (typically between 0 and 1) that expresses the machine learning model's certainty that a predicted object is present and that its classification is correct
-
 <img width="1389" height="617" alt="Screenshot from 2025-11-16 13-43-00" src="https://github.com/user-attachments/assets/79ffb09b-3f4b-4fa7-9426-e50f9181bf51">
+<p></p>
 
 <b>After an incident is detected (in this case, fire), an SMS alert is triggered via Twilio API.</b>
 
 <img width=auto height="500" alt="Screenshot from 2025-10-26 06-03-47" src="https://github.com/user-attachments/assets/10649a17-e1d8-44d5-a2b1-dbffad3adaa0" />
+<p></p>
+
+<b>The incident data is logged to the MongoDB Database.</b>
+
+<img width="auto" height="900" alt="Screenshot from 2025-10-24 21-54-04" src="https://github.com/user-attachments/assets/979a66ad-ca83-45a4-b6fc-3a95b804fc92" />
+<p></p>
+
+<hr>
+<p><i>Some other pictures from the development process:</i></p>
+<img width="auto" height="320" alt="Screenshot from 2025-10-24 14-55-44" src="https://github.com/user-attachments/assets/24922e47-4036-4751-85c2-5843902d50c3" />
 
 ---
 
@@ -117,6 +131,9 @@ The YOLO model is pretrained to detect a variety of objects, such as cars, buses
 **- numpy**: Numerical operations used across CV + ML  
 **- matplotlib**: Debug visuals, heatmaps, plotting
 
+### AI Tools
+**- ChatGPT**: For generating 'ResQ' logo
+
 ---
 
 ## Workflow
@@ -161,60 +178,60 @@ resq/
 
 ---
 
-## Root Python Modules
+### Root Python Modules
 
-### `app.py` — Flask Backend & Dispatch Engine
+#### `app.py` — Flask Backend & Dispatch Engine
 
 Manages web dashboard, routing, video feed, T5 pipeline, Twilio SMS, MongoDB logging, and resource allocation.
 
-### `detector.py` — Real-time CV Pipeline
+#### `detector.py` — Real-time CV Pipeline
 
 Handles MobileNet SSD detection, fire detection, crash logic, jam clustering, bounding boxes, and AI report triggering.
 
-### `main.py` — Incident Classification
+#### `main.py` — Incident Classification
 
 Implements clustering, overlap detection, event merging, and priority scoring.
 
-### `t5_generator.py`
+#### `t5_generator.py`
 
 Produces narrative incident reports and follow-up event predictions.
 
-### `db_utils.py`
+#### `db_utils.py`
 
 MongoDB logging utilities.
 
-### `sms_utils.py`
+#### `sms_utils.py`
 
 Minimal Twilio SMS sender.
 
-### `resources.py`
+#### `resources.py`
 
 Defines emergency receiver numbers.
 
-### `config.py`
+#### `config.py`
 
 Contains Twilio/MongoDB credentials, model name, server settings.
 
 ---
 
-## Model Folder
+### Model Folder
 
 MobileNet SSD pretrained model files.
 
 ---
 
-## UI Layer
+### UI Layer
 
-### `index.html`
+#### `index.html`
 Dashboard (video feed + real-time generated incident data)
-### `history.html`
+#### `history.html`
 Log history (fetched dynamically from MongoDB)
 
 ---
 
-## Dependencies
+### Dependencies
 
-### `requirements.txt`
+#### `requirements.txt`
 
 ```
 ## --- Web & Backend Frameworks --- ##
@@ -257,7 +274,7 @@ matplotlib            # Debug visuals, heatmaps, plotting
 
 Below are **all setup steps** required before running the application.
 
-## Step 1 - Create a Free Twilio Account
+### Step 1: Create a Free Twilio Account
 
 **URL:** [SMS Messaging, Built to Scale](https://login.twilio.com/u/signup?state=hKFo2SBPN0VrQ0R3LTBaQTBKRG5MdTZWVjZmdjlQbThwWGxmTKFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIDdQUkRqTjFPVHY5VlRQM09Ncm1naWFaaUFTTXYtU0FCo2NpZNkgTW05M1lTTDVSclpmNzdobUlKZFI3QktZYjZPOXV1cks) 💬
 
@@ -271,7 +288,7 @@ You will need:
 
 You will insert these into `config.py`.
 
-## Step 2 - Create a Free MongoDB Atlas Account
+### Step 2: Create a Free MongoDB Atlas Account
 
 **URL:** [https://www.mongodb.com/cloud/atlas/register](https://www.mongodb.com/cloud/atlas/register)
 
@@ -287,7 +304,7 @@ You will insert these into `config.py`.
 
 ---
 
-### Your `config.py` (Insert Your Details)
+### Step 3: Your `config.py` (Insert Your Details)
 
 ```python
 # Twilio credentials
@@ -408,6 +425,14 @@ Then open the url:
 http://127.0.0.1:5000
 ```
 
+
+---
+
+## Development Challenges
+
+* My team was initially struggling to get a full working test of the SMS notification functionality due to Twilio API having a very limited amount of credits for each free-tier account, but for the live demo in front of the hackathon judges we were able to borrow a club member's phone to create an account using their number and test the SMS.
+* It was a good experience overall.
+
 ---
 
 ## Final Notes
@@ -420,4 +445,4 @@ http://127.0.0.1:5000
 
 ## License
 
-This project is under the MIT license and is free to copy, modify, and distribute with appropriate attribution. Read the license at [LICENSE.md](LICENSE.md)
+This project is under the MIT license and is free to copy, modify, and distribute with appropriate attribution. Read the license at [LICENSE.md](LICENSE.md).
