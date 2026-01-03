@@ -67,6 +67,11 @@ The YOLO model is pretrained to detect a variety of objects, such as cars, buses
 <img width="1389" height="617" alt="Screenshot from 2025-11-16 13-43-00" src="https://github.com/user-attachments/assets/79ffb09b-3f4b-4fa7-9426-e50f9181bf51">
 <p></p>
 
+<b>Multiple incidents occuring at the same time or overlapping will also be displayed, like this:</b>
+
+<img width="449" height="49" alt="image" src="https://github.com/user-attachments/assets/21117233-7ae3-4d88-b26f-6c37d2e672d7" />
+<p></p>
+
 <b>After an incident is detected (in this case, fire), an SMS alert is triggered via Twilio API.</b>
 
 <img width=auto height="500" alt="Screenshot from 2025-10-26 06-03-47" src="https://github.com/user-attachments/assets/10649a17-e1d8-44d5-a2b1-dbffad3adaa0" />
