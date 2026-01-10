@@ -1,6 +1,9 @@
 # 🚨 Real-Time Road Incident/Hazard Detection and SMS Alert Notification System
 
 ### A real-time road incident detection system using Computer Vision (MobileNet/YOLO), AI-based incident reporting (T5), and instant SMS alerts (Twilio) via a Flask dashboard.
+<img width="850" height="auto" alt="Screenshot from 2025-11-16 13-43-00" src="https://github.com/user-attachments/assets/79ffb09b-3f4b-4fa7-9426-e50f9181bf51">
+<p></p>
+
 ---
 
 # TABLE OF CONTENTS
@@ -79,7 +82,7 @@ The YOLO model is pretrained to detect a variety of objects, such as cars, buses
 
 <b>The incident data is logged to the MongoDB Database.</b>
 
-<img width="auto" height="900" alt="Screenshot from 2025-10-24 21-54-04" src="https://github.com/user-attachments/assets/979a66ad-ca83-45a4-b6fc-3a95b804fc92" />
+<img width="900" height="auto" alt="Screenshot from 2025-10-24 21-54-04" src="https://github.com/user-attachments/assets/979a66ad-ca83-45a4-b6fc-3a95b804fc92" />
 <p></p>
 
 <hr>
